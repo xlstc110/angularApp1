@@ -1,0 +1,50 @@
+<!-- Interpolation -->
+<!-- ngStyle for modifying inline styling -->
+<p [ngStyle]="{'color' : rooms.availableRooms ? 'green' : 'red'}">Welcome to {{hotelName}}</p>
+
+<div [hidden]="hideRooms">
+    <!-- Property binding -->
+    <div [innerText]="numberOfRooms"></div>
+</div>
+
+<!-- Event binding -->
+<button (click)="toggle()">Toggle</button>
+
+<!-- Directives -->
+<!-- *ngIf -->
+<div *ngIf="rooms.availableRooms > 0">
+    Rooms List:
+    <!-- *ngFor -->
+    <table>
+        <tr>
+            <th>index</th>
+            <th>roomNumber</th>
+            <th>roomType</th>
+            <th>amenities</th>
+            <th>price</th>
+            <th>photos</th>
+            <th>checkinTime</th>
+            <th>checkoutTime</th>
+        </tr>
+        <!-- ngClass for modifying class -->
+        <tr [ngClass]="e ? 'even' : 'odd'" *ngFor="let room of roomList; let i = index; let e = even">
+            <th>{{i}}</th>
+            <th>{{room.roomNumber}}</th>
+            <th>{{room.roomType}}</th>
+            <!-- Lowercase Pipe -->
+            <th>{{room.amenities | lowercase}}</th>
+            <th>{{room.price}}</th>
+            <th>{{room.photos}}</th>
+            <th>{{room.checkinTime}}</th>
+            <!-- Date Pipe: | date -->
+            <th>{{room.checkoutTime | date : 'yy/dd/yyyy'}}</th>
+        </tr>
+    </table>
+</div>
+
+
+
+<!-- optional chaining -->
+<!-- adding the question mark will check if the object is there or not, if yes, continue, if not, circuit break -->
+<!-- {{rooms?.availableRooms ?? 'No Rooms'}} -->
+

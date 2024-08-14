@@ -1,0 +1,13 @@
+
+
+<div [ngSwitch]="role">
+    <div *ngSwitchCase="'User'">
+        Welcome User!
+    </div>
+    <div *ngSwitchCase="'Admin'">
+        <app1-rooms></app1-rooms>
+    </div>
+    <div *ngSwitchDefault>
+        Please Login
+    </div>
+</div>
